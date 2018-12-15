@@ -196,7 +196,17 @@ triangle.stroke();
  */
 
 function drawSmileyFace() {
+let canvas = document.getElementById('canvas5');
+let ctx = canvas.getContext('2d');
+ ctx.clearRect(0, 0, canvas.width, canvas.height);
+let radius;
 
+while(true){
+  radius=Number(prompt("Please enter a good radius."));
+  if(radius>=1 && radius<=canvas.width && Number.isInteger(radius)){
+    break;
+}
+}
 }
 
 /*
@@ -259,7 +269,24 @@ function drawStopSign() {
  */
 
 function drawPyramid() {
-
+  let canvas = document.getElementById('canvas8');
+   let ctx = canvas.getContext('2d');
+   ctx.clearRect(0, 0, canvas.width, canvas.height);
+   let length=Number(prompt("Please enter a side length"));
+   let x = 10;
+   let y = canvas.height-10;
+   let i = 0;
+   lineNumber = 1;
+   while(i < 5){
+     for(let j = 0+lineNumber;j <= 5; j++){
+       ctx.strokeRect(x,y - length, length, length);
+       x += length;
+     }
+     x = 10 + (length / 2) * lineNumber;
+     y -= length;
+     lineNumber++;
+     i++;
+   }
 }
 
 /*
