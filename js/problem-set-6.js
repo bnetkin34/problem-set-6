@@ -145,7 +145,7 @@ context.fillRect(10, 10, 100, 50);
 function drawTriangle() {
 
 let canvas = document.getElementById("canvas4")
-triangle = canvas.getContext("2d");
+let triangle = canvas.getContext("2d");
 let side1 = Number(prompt("Please enter a positive integer for your left side length."));
 let side2 = Number(prompt("Please enter a positive integer for your bottom side length."));
 let side3 = Number(prompt("Please enter a positive integer for your hypotenuse length."));
@@ -198,16 +198,37 @@ triangle.stroke();
 function drawSmileyFace() {
 let canvas = document.getElementById('canvas5');
 let ctx = canvas.getContext('2d');
- ctx.clearRect(0, 0, canvas.width, canvas.height);
+ ctx.clearRect(0, 0, canvas5.width, canvas5.height);
 let radius;
 
 while(true){
-  radius=Number(prompt("Please enter a good radius."));
-  if(radius>=1 && radius<=canvas.width && Number.isInteger(radius)){
+  radius = Number(prompt("Please enter a good radius."));
+  if(radius >= 1 && radius <= canvas5.width && Number.isInteger(radius)){
     break;
 }
 }
+let x = canvas.width;
+let y = canvas.height;
+let eyeRadius = radius * .1
+let mouthRadius = radius * .7
+ctx.beginPath();
+ctx.arc(x/2, y/2, radius, 0, Math.PI * 2);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(x/2 - radius/3, y/2-radius/4, eyeRadius,0, Math.PI*2);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(x/2 + radius/3, y/2 - radius/4, eyeRadius, 0, Math.PI*2);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(x/2, y/2, mouthRadius, 0, Math.PI);
+ctx.stroke();
 }
+
+
 
 /*
  * Star. 9 points.
