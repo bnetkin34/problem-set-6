@@ -249,7 +249,39 @@ ctx.stroke();
  */
 
 function drawStar() {
+  let op = document.getElementById("canvas6").getContext("2d");
+  ctx.clearRect(0,0,1024,760);
 
+  let outerRadius;
+  let innerRadius;
+  do {
+    outerRadius = Number(prompt("Outer Radius:"));
+  } while (isNaN(outerRadius));
+  do {
+    innerRadius = Number(prompt("Inner Radius:"));
+  } while (isNaN(innerRadius));
+
+  let degrees = 0;
+
+  if (innerRadius > outerRadius){
+    alert("Your outer radius must be larger than your inner radius.");
+  } else if (outerRadius<2){
+    alert("Your outer radius is too small.");
+  } else if (innerRadius<1){
+    alert("Your inner radius is too small");
+  } else {
+    ctx.beginPath();
+
+    ctx.moveTo(125,125-outerRadius);
+    for (let i=0; i<=5; i++){
+      ctx.lineTo(125+Math.round((Math.cos(Math.PI*(degrees-90)/180)*outerRadius)), 125+Math.round((Math.sin(Math.PI*(degrees-90)/180)*outerRadius)));
+      degrees +=36;
+      ctx.lineTo(125+Math.round((Math.cos(Math.PI*(degrees-90)/180)*innerRadius)), 125+Math.round((Math.sin(Math.PI*(degrees-90)/180)*innerRadius)));
+      degrees +=36;
+    }
+    ctx.stroke();
+    ctx.closePath();
+  }
 }
 
 /*
