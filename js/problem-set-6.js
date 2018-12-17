@@ -268,7 +268,27 @@ function drawStar() {
  */
 
 function drawStopSign() {
-
+let ctx = document.getElementById('canvas7').getContext("2d");
+let s = 80;
+let c = Number((s/Math.sqrt(2)).toFixed(0));
+let x = s-10;
+let y = 10;
+ctx.beginPath();
+ctx.moveTo(x,y);
+ctx.lineTo(x+s,y);
+ctx.lineTo(x+s+c,y+c);
+ctx.lineTo(x+s+c,y+s+c);
+ctx.lineTo(x+s,y+s+c+c);
+ctx.lineTo(x,y+s+c+c);
+ctx.lineTo(x-c,y+s+c);
+ctx.lineTo(x-c,y+c);
+ctx.lineTo(x,y);
+ctx.fillStyle="#f00";
+ctx.fill();
+ctx.closePath();
+ctx.fillStyle="#fff";
+ctx.font="65px sans-serif";
+ctx.fillText("STOP", 22, 133);
 }
 
 /*
@@ -340,5 +360,63 @@ function drawPyramid() {
  */
 
 function drawHouse() {
+  let ctx = document.getElementById("canvas9").getContext("2d");
+  ctx.clearRect(0,0,1024,760);
+  let houseColor = prompt("House Color:");
+  let doorColor = prompt("Front Door Color:");
+  if ((houseColor == "blue" || houseColor == "brown"|| houseColor == "green" || houseColor == "orange" || houseColor == "purple" || houseColor == "red" || houseColor == "yellow") && (doorColor == "blue" || doorColor == "brown"|| doorColor == "green" || doorColor == "orange" || doorColor == "purple" || doorColor == "red" || doorColor == "yellow")){
 
+    ctx.fillStyle="black";
+    ctx.fillRect(150,300,724,450);
+    ctx.fillStyle=houseColor;
+    ctx.fillRect(151,301,722,448);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(150,300);
+    ctx.lineTo(512,10);
+    ctx.lineTo(874,300);
+    ctx.lineTo(150,300);
+    ctx.fillStyle="black";
+    ctx.fill();
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.moveTo(153,299);
+    ctx.lineTo(512,12);
+    ctx.lineTo(871,299);
+    ctx.lineTo(151,299);
+    ctx.fillStyle="gray";
+    ctx.fill();
+    ctx.closePath();
+
+    ctx.fillStyle="black";
+    ctx.fillRect(260,620,80,80);
+    ctx.fillRect(260,400,80,80);
+    ctx.fillRect(684,620,80,80);
+    ctx.fillRect(684,400,80,80);
+    ctx.fillStyle="lightblue";
+    ctx.fillRect(261,621,78,78);
+    ctx.fillRect(261,401,78,78);
+    ctx.fillRect(685,621,78,78);
+    ctx.fillRect(685,401,78,78);
+
+    ctx.fillStyle="black"
+    ctx.fillRect(462,590,100,160);
+    ctx.fillStyle=doorColor;
+    ctx.fillRect(463,591,98,158);
+
+    ctx.beginPath()
+    ctx.arc(545,670,8,0,Math.PI*2,true);
+    ctx.fillStyle="black";
+    ctx.fill();
+    ctx.closePath();
+    ctx.beginPath()
+    ctx.arc(545,670,7,0,Math.PI*2,true);
+    ctx.fillStyle="gold";
+    ctx.fill();
+    ctx.closePath();
+
+  } else {
+    alert("One of your colors is not supported");
+  }
 }
