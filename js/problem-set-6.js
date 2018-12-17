@@ -158,6 +158,7 @@ if(((side1 ** 2) + (side2 ** 2) == (side3 ** 2)) && side1 > 0 && side2 > 0 && si
   break;
 }else{
   alert("That is not a valid right triangle.");
+  break;
 }
 }
 triangle.beginPath();
@@ -249,7 +250,7 @@ ctx.stroke();
  */
 
 function drawStar() {
-  let op = document.getElementById("canvas6").getContext("2d");
+  let ctx = document.getElementById("canvas6").getContext("2d");
   ctx.clearRect(0,0,1024,760);
 
   let outerRadius;
@@ -302,8 +303,8 @@ function drawStar() {
 function drawStopSign() {
 let ctx = document.getElementById('canvas7').getContext("2d");
 let s = 80;
-let c = Number((s/Math.sqrt(2)).toFixed(0));
-let x = s-10;
+let c = Number((80/Math.sqrt(2)).toFixed(0));
+let x = 70;
 let y = 10;
 ctx.beginPath();
 ctx.moveTo(x,y);
