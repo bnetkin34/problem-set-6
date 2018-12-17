@@ -161,6 +161,7 @@ if(((side1 ** 2) + (side2 ** 2) == (side3 ** 2)) && side1 > 0 && side2 > 0 && si
   break;
 }
 }
+if(Math.pow(side1, 2) + Math.pow(side2, 2) == Math.pow(side3, 2)){
 triangle.beginPath();
 triangle.moveTo(x,y);
 triangle.lineTo(x, y + side1);
@@ -175,6 +176,7 @@ triangle.beginPath();
 triangle.moveTo(x,y);
 triangle.lineTo(x + side2, y + side1);
 triangle.stroke();
+}
 }
 
 /*
@@ -199,33 +201,37 @@ triangle.stroke();
 function drawSmileyFace() {
 let canvas = document.getElementById('canvas5');
 let ctx = canvas.getContext('2d');
- ctx.clearRect(0, 0, canvas5.width, canvas5.height);
+ ctx.clearRect(0, 0, canvas.width, canvas.height);
 let radius;
 
 while(true){
   radius = Number(prompt("Please enter a good radius."));
   if(radius >= 1 && radius <= canvas5.width && Number.isInteger(radius)){
     break;
+}else if (radius > 380) {
+    alert("Your smiley face does not fit on the canvas.");
+} else {
+
 }
+
 }
-let x = canvas.width;
-let y = canvas.height;
+
 let eyeRadius = radius * .1
 let mouthRadius = radius * .7
 ctx.beginPath();
-ctx.arc(x/2, y/2, radius, 0, Math.PI * 2);
+ctx.arc(radius + 10, radius + 10, radius, 0, Math.PI * 2);
 ctx.stroke();
 
 ctx.beginPath();
-ctx.arc(x/2 - radius/3, y/2-radius/4, eyeRadius,0, Math.PI*2);
+ctx.arc(radius + 10 - radius/3, radius + 10 - radius/4, eyeRadius,0, Math.PI*2);
 ctx.stroke();
 
 ctx.beginPath();
-ctx.arc(x/2 + radius/3, y/2 - radius/4, eyeRadius, 0, Math.PI*2);
+ctx.arc(radius + 10 + radius/3, radius + 10 - radius/4, eyeRadius, 0, Math.PI*2);
 ctx.stroke();
 
 ctx.beginPath();
-ctx.arc(x/2, y/2, mouthRadius, 0, Math.PI);
+ctx.arc(radius + 10, radius + 10, mouthRadius, 0, Math.PI);
 ctx.stroke();
 }
 
@@ -353,7 +359,7 @@ function drawPyramid() {
    lineNumber = 1;
    while(i < 5){
      for(let j = 0+lineNumber;j <= 5; j++){
-       ctx.strokeRect(x,y - length, length, length);
+       ctx.strokeRect(x, y - length, length, length);
        x += length;
      }
      x = 10 + (length / 2) * lineNumber;
@@ -438,12 +444,12 @@ function drawHouse() {
     ctx.fillStyle=doorColor;
     ctx.fillRect(463,591,98,158);
 
-    ctx.beginPath()
+    ctx.beginPath();
     ctx.arc(545,670,8,0,Math.PI*2,true);
     ctx.fillStyle="black";
     ctx.fill();
     ctx.closePath();
-    ctx.beginPath()
+    ctx.beginPath();
     ctx.arc(545,670,7,0,Math.PI*2,true);
     ctx.fillStyle="gold";
     ctx.fill();
